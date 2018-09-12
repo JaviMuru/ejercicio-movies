@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .collection
+    if content.length > 0
+      .container
+      if categories && categories.length > 0
+        #myBtnContainer
+          button(onclick="filterSelection('all')").btn.active Show all
+          each category in categories
+            button(onclick="filterSelection("+category.id+")").btn #{category.name}
+      .columns.is-multiline
+        each element in content
+          .filterDiv.column.is-3-tablet.is-3-desktop.show(data-categories=element.genre_ids)
+            .project_container
+              .project_media
+                if element.type === 'movie'
+                  a(href="http://localhost:3000/movies/" + element.id)
+                    img(src="http://image.tmdb.org/t/p/w500"+ element.poster_path alt="Placeholder image").project_image
+                    h1.title #{element.title}
+                else if element.type === 'tvSerie'
+                  a(href="http://localhost:3000/series/" + element.id)
+                    img(src="http://image.tmdb.org/t/p/w500"+ element.poster_path alt="Placeholder image").project_image
+                    h1.title #{element.original_name}
+    else
+      p No has guardado ninguna película/serie.
+
+  script(src='/js/scripts.js')
+  script(filterSelection('all') )

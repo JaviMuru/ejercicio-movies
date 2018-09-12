@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+html  
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Movies API
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css")
+    script(defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js")
+  body    
+    nav 
+      .navbar.is-info
+        .navbar-brand
+          a(href="/").navbar-item 
+            img(src="/images/logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="45" height="auto")
+            h1 Movies API
+          .navbar-burger.burger(data-target="navbarExampleTransparentExample")
+        #navbarExampleTransparentExample.navbar-menu
+          .navbar-start
+            a(href="/").navbar-item Home
+            a(href="/movies").navbar-item Movies
+            a(href="/series").navbar-item TV Series
+            a(href="/my-library").navbar-item My Library
+            a(href="/my-favourites").navbar-item Favourites
+          .navbar-end
+            .navbar-item
+              .field.is-grouped
+                .search
+                  form#search-form(action="/search", method="GET")
+                    input(placeholder="Search..." type="text" value="" name="filterBy" id="filterBy")
+                p.control
+                  a(data-social-network="GitHub" 
+                    data-social-action="git" 
+                    data-social-target="http://localhost:4000" 
+                    target="_blank" 
+                    href=""
+                  ).bd-tw-button.button.is-primary
+                    span.icon 
+                      i.fab.fa-github
+                    span GitHub
+                p.control
+                  a(data-social-network="LinkedIn" 
+                    data-social-action="linkedin" 
+                    data-social-target="https://www.linkedin.com/in/javier-muruzabal/" 
+                    target="_blank" 
+                    href="https://www.linkedin.com/in/javier-muruzabal/"
+                  ).bd-tw-button.button.is-link
+                    span.icon 
+                      i.fab.fa-linkedin
+                    span LinkedIn
+    main
+      block content
+    footer.footer
+      .content.has-text-centered
+        a(href="https://www.themoviedb.org/") The Movie Database

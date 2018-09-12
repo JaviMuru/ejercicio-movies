@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  article.collection.content(data-id=detail.id, data-rate=detail.rating)
+    .tile.is-ancestor.is-marginless
+      .tile.is-parent
+        article.tile.is-child
+          .content
+            img(src="http://image.tmdb.org/t/p/w500"+ detail.poster_path alt="Placeholder image")
+      .tile.is-vertical.is-8
+        .tile
+          .tile.is-parent.is-vertical
+            article.tile.is-child
+              if detail.type === 'movie'
+                h1.title #{detail.title}
+              else if detail.type === 'tvSerie'
+                h1.title #{detail.original_name}
+              p.subtitle #{detail.overview}
+              nav.level
+                .level-left
+                  .level-item
+                    if detail.library
+                      button(type="button" id="botonOn" onclick="changeLibrary()").button.is-info Quit from Library
+                    else 
+                      button(type="button" id="botonOn" onclick="changeLibrary()").button.is-info Add to Library
+                .level-right
+                  .level-item
+                    fielset.rating  
+                      input(type="radio" id="star5" name="rating" value="5")
+                      label(for="star5" title="Awesome - 5 stars").full
+                      input(type="radio" id="star4half" name="rating" value="4.5")
+                      label(for="star4half" title="Pretty good - 4.5 stars").half
+                      input(type="radio" id="star4" name="rating" value="4")
+                      label(for="star4" title="Pretty good - 4 stars").full
+                      input(type="radio" id="star3half" name="rating" value="3.5")
+                      label(for="star3half" title="Meh - 3.5 stars").half
+                      input(type="radio" id="star3" name="rating" value="3")
+                      label(for="star3" title="Meh - 3 stars").full
+                      input(type="radio" id="star2half" name="rating" value="2.5")
+                      label(for="star2half" title="Kinda bad - 2.5 stars").half
+                      input(type="radio" id="star2" name="rating" value="2")
+                      label(for="star2" title="Kinda bad - 2 stars").full
+                      input(type="radio" id="star1half" name="rating" value="1.5")
+                      label(for="star1half" title="Meh - 1.5 stars").half
+                      input(type="radio" id="star1" name="rating" value="1")
+                      label(for="star1" title="Sucks big time - 1 star").full
+                      input(type="radio" id="starhalf" name="rating" value="0.5")
+                      label(for="starhalf" title="Sucks big time - 0.5 stars").half
+                    if detail.fav
+                      div.fav.has-text-danger
+                        span.icon.is-medium
+                          i.fas.fa-heart.fa-lg
+                    else
+                      div.fav
+                        span.icon.is-medium
+                          i.fas.fa-heart.fa-lg
+
+  script(src='/js/scripts.js')
